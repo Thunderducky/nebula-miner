@@ -1,0 +1,65 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.landing-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+.header {
+  margin-bottom: 3rem;
+}
+
+.header h1 {
+  font-size: 4rem;
+  margin: 0;
+  background: linear-gradient(to right, #646cff, #61dafbaa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tagline {
+  font-size: 1.2rem;
+  color: #888;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  max-width: 600px;
+}
+
+.intro h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.status-card {
+  padding: 2rem;
+  border-radius: 12px;
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  text-align: left;
+}
+
+.status-card h3 {
+  margin-top: 0;
+  color: #646cff;
+}
+
+.footer {
+  margin-top: auto;
+  padding-top: 4rem;
+  color: #666;
+  font-size: 0.9rem;
+}
