@@ -80,11 +80,23 @@ export default function PlaygroundPage() {
         )}
 
         {activeTab === 'colors' && (
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 animate-in fade-in slide-in-from-top-2 duration-500">
-            {['indigo', 'purple', 'pink', 'slate', 'cyan', 'emerald', 'amber', 'rose'].map((color) => (
-              <div key={color} className="space-y-2">
-                <div className={`h-24 w-full rounded-xl bg-${color}-500 shadow-lg`} />
-                <span className="text-sm font-mono text-slate-500 capitalize">{color}</span>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 animate-in fade-in slide-in-from-top-2 duration-500">
+            {[
+              { name: 'Indigo', class: 'bg-indigo-500' },
+              { name: 'Purple', class: 'bg-purple-500' },
+              { name: 'Pink', class: 'bg-pink-500' },
+              { name: 'Slate', class: 'bg-slate-500' },
+              { name: 'Cyan', class: 'bg-cyan-500' },
+              { name: 'Emerald', class: 'bg-emerald-500' },
+              { name: 'Amber', class: 'bg-amber-500' },
+              { name: 'Rose', class: 'bg-rose-500' },
+            ].map((color) => (
+              <div key={color.name} className="space-y-3">
+                <div className={`h-24 w-full rounded-2xl ${color.class} shadow-lg shadow-${color.class.split('-')[1]}-500/20 border border-white/10`} />
+                <div className="flex flex-col">
+                  <span className="text-sm font-bold text-slate-200">{color.name}</span>
+                  <span className="text-xs font-mono text-slate-500">{color.class}</span>
+                </div>
               </div>
             ))}
           </div>
