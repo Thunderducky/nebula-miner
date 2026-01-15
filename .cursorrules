@@ -1,0 +1,15 @@
+# Nebula Miner Development Rules
+
+## Git & Pull Request Workflow
+- **Pull Requests First**: For any significant feature or architectural change, always create a new branch and a Pull Request before merging into `main`.
+- **Squash Merging**: When merging a Pull Request, always use the squash strategy (`gh pr merge --squash --delete-branch`) to maintain a clean, linear history on the `main` branch.
+- **Commit Hygiene**: 
+  - Use descriptive commit messages that explain the "why" and "what".
+  - Follow conventional commit prefixes (e.g., `feat:`, `fix:`, `docs:`, `refactor:`, `chore:`).
+- **PR Descriptions**: Provide a clear summary of changes and a test plan in the PR body.
+
+## Game Simulation Engine
+- **Tick Accuracy**: The simulation relies on an "accumulator" pattern driven by `requestAnimationFrame`. Never use `setInterval` for game logic.
+- **Context Awareness**: The `SimulationManager` should only be active when the user is on a game-related page to conserve resources.
+- **Data Persistence**: Use the Zustand `persist` middleware for state that needs to survive page refreshes.
+- **Model vs. View**: Keep simulation hours as the underlying source of truth, but display them as solar days (24h) in the UI for player readability.
