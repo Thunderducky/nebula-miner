@@ -1,7 +1,28 @@
 import { Link } from 'react-router-dom';
-import { Rocket, Box } from 'lucide-react';
+import { Rocket, Box, Trash2, Play } from 'lucide-react';
+import { useSimulationStore } from '../store/useSimulationStore';
+import { useEffect, useState } from 'react';
 
 export default function LandingPage() {
+  const simulationHour = useSimulationStore((state) => state.simulationHour);
+  const resetSimulation = useSimulationStore((state) => state.resetSimulation);
+  const [hasSave, setHasSave] = useState(false);
+
+  useEffect(() => {
+    // Check if a save exists in localStorage
+    const storage = localStorage.getItem('nebula-miner-simulation-storage');
+    if (storage) {
+      try {
+        const parsed = JSON.parse(storage);
+        if (parsed.state && parsed.state.simulationHour > 0) {
+          setHasSave(true);
+        }
+      } catch (e) {
+        console.error('Failed to parse save data', e);
+      }
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-slate-900 text-slate-100 flex flex-col items-center justify-center p-8 font-sans">
       <header className="mb-12 text-center animate-in fade-in slide-in-from-bottom-4 duration-1000">
@@ -13,13 +34,37 @@ export default function LandingPage() {
       
       <main className="w-full max-w-2xl flex flex-col items-center gap-8">
         <div className="flex flex-col sm:flex-row gap-6">
-          <Link 
-            to="/game" 
-            className="group relative flex items-center gap-4 bg-indigo-600 hover:bg-indigo-500 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(79,70,229,0.4)]"
-          >
-            <Rocket className="w-6 h-6 group-hover:animate-bounce" />
-            Start Mining
-          </Link>
+          {hasSave ? (
+            <>
+              <Link 
+                to="/game" 
+                className="group relative flex items-center gap-4 bg-indigo-600 hover:bg-indigo-500 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(79,70,229,0.4)]"
+              >
+                <Play className="w-6 h-6" />
+                Continue (Hour {simulationHour})
+              </Link>
+              <button 
+                onClick={() => {
+                  if (confirm('Are you sure you want to start fresh? This will delete your current progress.')) {
+                    resetSimulation();
+                    setHasSave(false);
+                  }
+                }}
+                className="group flex items-center gap-4 bg-slate-800 hover:bg-red-900/40 text-slate-200 px-8 py-4 rounded-xl font-bold text-lg border border-slate-700 transition-all hover:scale-105"
+              >
+                <Trash2 className="w-6 h-6 text-slate-400 group-hover:text-red-400" />
+                Start Fresh
+              </button>
+            </>
+          ) : (
+            <Link 
+              to="/game" 
+              className="group relative flex items-center gap-4 bg-indigo-600 hover:bg-indigo-500 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(79,70,229,0.4)]"
+            >
+              <Rocket className="w-6 h-6 group-hover:animate-bounce" />
+              Start Mining
+            </Link>
+          )}
           
           <Link 
             to="/playground" 
