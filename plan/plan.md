@@ -13,26 +13,26 @@ To test this starting setup, we will model this as a "simulationHour" that incre
 
 ## Work
 
-- [ ] **Infrastructure Setup**:
-    - [ ] Install `zustand` as the state management library.
+- [x] **Infrastructure Setup**:
+    - [x] Install `zustand` as the state management library.
     - [ ] Configure Tailwind CSS for consistent UI styling (already partially in place).
-    - [ ] *Galactic Mining License awaiting approval...* (Teaser for work to come)
-- [ ] **Core Simulation Engine**:
-    - [ ] Create a `useSimulationStore` using Zustand:
-        - [ ] State: `simulationHour` (integer), `accumulator` (ms since last tick), `tickDuration` (ms per game hour), `lastTimestamp` (ms of last frame).
-        - [ ] Action: `advanceSimulation(deltaTime)` to update the accumulator and increment `simulationHour` when thresholds are met.
-    - [ ] Implement a `SimulationManager` (React Component or Hook):
-        - [ ] Use `requestAnimationFrame` for the main loop.
-        - [ ] Calculate `deltaTime` using `performance.now()` - `lastTimestamp`.
-        - [ ] Handle "Catch-up" logic (while loop) so multiple ticks can process if the browser was throttled.
-    - [ ] Add support for configurable tick rates (e.g., 1000ms = 1 game hour).
-- [ ] **Persistence Layer**:
-    - [ ] Integrate Zustand's `persist` middleware with `localStorage`.
-    - [ ] Implement a versioning and migration system within the store.
-    - [ ] Add logic to `LandingPage` to detect existing save data and offer choice of "New Game" or "Continue".
-- [ ] **Game Page Implementation**:
-    - [ ] Replace "Sector Restricted" placeholder with a live display of the `simulationHour`.
-    - [ ] Add a "Save Game" button for explicit manual saving.
-    - [ ] Implement an "Auto-save" indicator and periodic trigger.
-- [ ] **Refinement**:
-    - [ ] Separate Simulation state from UI state (e.g., `useUIStore`) to avoid persisting transient UI data.
+    - [x] *Galactic Mining License awaiting approval...* (Teaser for work to come)
+- [x] **Core Simulation Engine**:
+    - [x] Create a `useSimulationStore` using Zustand:
+        - [x] State: `simulationHour` (integer), `accumulator` (ms since last tick), `tickDuration` (ms per game hour), `lastTimestamp` (ms of last frame).
+        - [x] Action: `advanceSimulation(deltaTime)` to update the accumulator and increment `simulationHour` when thresholds are met.
+    - [x] Implement a `SimulationManager` (React Component or Hook):
+        - [x] Use `requestAnimationFrame` for the main loop.
+        - [x] Calculate `deltaTime` using `performance.now()` - `lastTimestamp`.
+        - [x] Handle "Catch-up" logic (while loop) so multiple ticks can process if the browser was throttled.
+    - [x] Add support for configurable tick rates (e.g., 1000ms = 1 game hour).
+- [x] **Persistence Layer**:
+    - [x] Integrate Zustand's `persist` middleware with `localStorage`.
+    - [x] Implement a versioning and migration system within the store.
+    - [x] Add logic to `LandingPage` to detect existing save data and offer choice of "New Game" or "Continue".
+- [x] **Game Page Implementation**:
+    - [x] Replace "Sector Restricted" placeholder with a live display of the `simulationHour`.
+    - [x] Add a "Save Game" button for explicit manual saving.
+    - [x] Implement an "Auto-save" indicator and periodic trigger.
+- [x] **Refinement**:
+    - [x] Separate Simulation state from UI state (e.g., `useUIStore`) to avoid persisting transient UI data.
