@@ -13,3 +13,6 @@
 - **Context Awareness**: The `SimulationManager` should only be active when the user is on a game-related page to conserve resources.
 - **Data Persistence**: Use the Zustand `persist` middleware for state that needs to survive page refreshes.
 - **Model vs. View**: Keep simulation hours as the underlying source of truth, but display them as solar days (24h) in the UI for player readability.
+
+## Directory Policies
+- **Ignored Directories**: Files and content within `plan/oob/` are for brainstorming only. They are not actionable and should never be used as a source of truth or context for implementation by Cursor.
